@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
+  # resources :photos, except: [:new, :edit]
+  # resources :attractions, except: [:new, :edit]
+  # resources :vacations, except: [:new, :edit]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  resources :vacations, :except => [:new, :edit, :update] do
+    resources :attractions, only: [:show, :create, :destroy]
+  end
+
+  resources :attractions, only: [] do
+    resources :photos, only: [:create, :destroy]
+  end
+
+
   resources :sessions, only: [:destroy]
 
   post "login" => "sessions#create", :as => "login"

@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
     else
       render json: {}, status: 400
     end
+    # byebug
   end
 
   # DELETE /sessions/1

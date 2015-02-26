@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 	has_secure_password
-
-	validates :password, length: { within: 6..40 }
+		validates :username, uniqueness: true, presence: true
+		has_many :vacations
+		
+	def self.authenticate username, password
+		User.find_by_username(username).try(:authenticate, password)
+	end
 end
