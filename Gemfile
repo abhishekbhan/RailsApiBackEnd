@@ -7,7 +7,7 @@ gem 'rails-api'
 
 gem 'spring', :group => :development
 
-
+gem 'httparty'
 gem 'sqlite3'
 gem 'byebug'
 

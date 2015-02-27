@@ -124,6 +124,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
   google_places
+  httparty
   rack-cors
   rails (= 4.2.0)
   rails-api

@@ -9,7 +9,12 @@ class AttractionsController < ApplicationController
 
   #   # render json: results
   # end
+  # def new
+  #   # @result = 
 
+  #   response =
+  # HTTParty.get("http://rubygems.org/api/v1/versions/httparty.json")
+  # end
   # GET /attractions/1
   # GET /attractions/1.json
   def show
@@ -22,11 +27,12 @@ class AttractionsController < ApplicationController
   # POST /attractions
   # POST /attractions.json
   def create
+    @vacation = Vacation.find(params[:vacation_id])
     @attraction = Attraction.new(attraction_params)
       # , vacation_id: params[:vacation_id])
 
     if @attraction.save
-      render json: @attraction, status: :created, location: @attraction
+      render json: @attraction, status: :created, :location => vacation_attraction_path(@vacation , @attraction)
     else
       render json: @attraction.errors, status: :unprocessable_entity
     end
