@@ -18,10 +18,15 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(photo_params, attraction_id: params[:attraction_id])
+    # @vacation = Vacation.find(params[:vacation_id])
+    @attraction = Attraction.find(params[:attraction_id])
+    @vacation_id = @attraction.vacation_id
+    # @vacation = Vacation.find(9)
+    @photo = Photo.new(photo_params)
 
     if @photo.save
-      render json: @photo, status: :created, location: @photo
+      render json: @photo, status: :created, location: vacation_attraction_path(@vacation_id , @attraction)
+      # vacation_attraction(@vacation , @attraction)
     else
       render json: @photo.errors, status: :unprocessable_entity
     end
@@ -54,6 +59,6 @@ class PhotosController < ApplicationController
     end
 
     def photo_params
-      params.require(:photo).permit(:url, :attraction_id)
+      params.require(:photo).permit(:caption,:url, :attraction_id)
     end
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :attractions, only: [] do
-    resources :photos, only: [:create, :destroy]
+    resources :photos, only: [:index, :create, :destroy]
   end
 
 

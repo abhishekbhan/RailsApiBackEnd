@@ -9,6 +9,10 @@ class AttractionsController < ApplicationController
 
   #   # render json: results
   # end
+
+   # def index
+   #  @attractions = Attraction.all
+   # end
   # def new
   #   # @result = 
 

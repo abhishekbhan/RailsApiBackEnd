@@ -6,6 +6,7 @@ class VacationsController < ApplicationController
   def index
     # @user = current_user
     # @vacations = @user.vacations
+    # @vacations = Vacation.find(user_id: current_user.id)
     @vacations = Vacation.all
     # byebug
     render json: @vacations
